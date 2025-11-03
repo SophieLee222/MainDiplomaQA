@@ -1,5 +1,7 @@
 // BaseTest.java
-import io.appium.java_client.MobileElement;
+//import io.appium.java_client.MobileElement;
+import org.openqa.selenium.WebElement;
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import org.junit.jupiter.api.AfterEach;
@@ -8,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import java.time.Duration;
 import io.appium.java_client.android.nativekey.AndroidKey;
 
 
@@ -60,7 +63,7 @@ public abstract class BaseTests {
 
     // ---- Утилиты ожиданий и действий ----
     protected WebDriverWait waitShort() {
-        return new WebDriverWait(driver, 5);
+        return new WebDriverWait(driver, Duration.ofSeconds(5));
     }
 
     protected void visible(WebElement el) {
@@ -94,3 +97,4 @@ public abstract class BaseTests {
     }
 
 }
+
