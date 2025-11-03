@@ -1,11 +1,10 @@
 // BaseTest.java
 //import io.appium.java_client.MobileElement;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebElement;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;

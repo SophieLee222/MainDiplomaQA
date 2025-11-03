@@ -1,12 +1,14 @@
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 public class AuthTests extends BaseTests {
 
     private static final String INVALID_LOGIN = "abc";
     private static final String INVALID_PASSWORD = "qwe";
+
+    @BeforeAll
+    static void setUpAll() {
+
+    }
 
     @BeforeEach
     public void prepare() {
