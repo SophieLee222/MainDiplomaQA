@@ -1,9 +1,9 @@
+package tests;
+
+import data.Data;
 import org.junit.jupiter.api.*;
 
 public class AuthTests extends BaseTests {
-
-    private static final String INVALID_LOGIN = "abc";
-    private static final String INVALID_PASSWORD = "qwe";
 
     @BeforeAll
     static void setUpAll() {
@@ -12,21 +12,19 @@ public class AuthTests extends BaseTests {
 
     @BeforeEach
     public void prepare() {
-        click(mobile.login());
-        mobile.login().clear();
-        click(mobile.password());
-        mobile.password().clear();
+        steps.clearLoginFields();
     }
 
     @Test
-    public void validLoginTest() {
-        doLogin(VALID_LOGIN, VALID_PASSWORD);
-        visible(mobile.allNewsText);
+    public void validAuthTest() {
+        steps.loginWithValidData();
+        steps.waitAllNewsVisible();
+        Assertions.assertEquals("ALL NEWS", mobile.allNewsText.getText());
     }
 
     @Test
     public void invalidLoginTest() {
-        doLogin(INVALID_LOGIN, VALID_PASSWORD);
+        steps.doLogin(Data.INVALID_LOGIN, Data.VALID_PASSWORD);
         // проверка, что остались на экране логина:
         visible(mobile.loginBtn);
         Assertions.assertEquals("SIGN IN", mobile.loginBtn.getText());
@@ -34,14 +32,13 @@ public class AuthTests extends BaseTests {
 
     @Test
     public void invalidPasswordTest() {
-        doLogin(VALID_LOGIN, INVALID_PASSWORD);
+        steps.doLogin(Data.VALID_LOGIN, Data.INVALID_PASSWORD);
         visible(mobile.loginBtn);
         Assertions.assertEquals("SIGN IN", mobile.loginBtn.getText());
     }
 
     @AfterEach
     public void logoutAfterEach() {
-        logoutIfPossible();
+        steps.logoutIfPossible();
     }
 }
-
